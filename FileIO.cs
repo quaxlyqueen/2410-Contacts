@@ -23,8 +23,7 @@ public class FileIo
     /// <param name="file"></param>
     public void Import(File file)
     {
-        file.Parse();
-        _contacts.Add(file.Contact);
+        // TODO
     }
 
     /// <summary>
