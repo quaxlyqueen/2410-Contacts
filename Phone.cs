@@ -5,7 +5,7 @@ namespace Contacts;
 /// </summary>
 public class Phone : IEquatable<Phone>
 {
-    private string number;
+    public string number { get; }
     public PhoneType? Type { get; }
 
     /// <summary>
@@ -34,6 +34,16 @@ public class Phone : IEquatable<Phone>
             return false;
 
         return this.ToString().Equals(numberToCompare.ToString());
+    }
+
+    
+    /// <summary>
+    /// Returns the phone number without any formatting, for use in saving contacts to a file.
+    /// </summary>
+    /// <returns>Unformatted phone number</returns>
+    public string DisplayString()
+    {
+        return number;
     }
 
     /// <summary>

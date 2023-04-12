@@ -22,7 +22,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jashton/dev/active/2410-Contacts/File.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FileInputOutput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FileInputOutput.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +82,7 @@
       <updated>1681080492783</updated>
       <workItem from="1681080493650" duration="35000" />
       <workItem from="1681080650726" duration="78000" />
-      <workItem from="1681235805484" duration="21722000" />
+      <workItem from="1681235805484" duration="27798000" />
     </task>
     <servers />
   </component>

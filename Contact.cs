@@ -13,7 +13,64 @@ public class Contact : IEquatable<Contact>
     public List<string> Emails { get; }
     public ContactCategory Type { get; set; }
     public string PictureUrl { get; set; }
+    private List<string> attributes { get; }
 
+    /// <summary>
+    /// Loads a saved contact and creates a new Contact object based upon the saved information.
+    /// </summary>
+    /// <param name="savedContact"></param>
+    public Contact(string savedContact)
+    {
+        string[] contactArr = savedContact.Split("|");
+        FirstName = contactArr[0];
+        LastName = contactArr[1];
+        Addresses = new List<Address>();
+        Numbers = new List<Phone>();
+        Emails = new List<string>();
+        
+        if (contactArr[2].Length > 0)
+        {
+            string[] addr = contactArr[2].Split(",");
+            foreach (string a in addr)
+            {
+                if(!a.Equals(""))
+                    Addresses.Add(new Address(a, null)); // TODO: Need to find addr type.
+            }
+        }
+
+        if (contactArr[3].Length > 0)
+        {
+            string[] phones = contactArr[3].Split(",");
+            foreach (string p in phones)
+            {
+                if(!p.Equals(""))
+                    Numbers.Add(new Phone(p, null)); // TODO: Need to find phone type.
+            }
+        }
+
+        if (contactArr[4].Length > 0)
+        {
+            string[] emails = contactArr[4].Split(",");
+            foreach (string e in emails)
+            {
+                if(!e.Equals(""))
+                    Emails.Add(e);
+            }
+        }
+
+        if (!contactArr[5].Equals(""))
+        {
+            ContactCategory cat = (ContactCategory)Enum.Parse(typeof(ContactCategory), contactArr[5]);
+            Type = cat;
+        }
+        else
+        {
+            Type = ContactCategory.Other;
+        }
+
+        if (!contactArr[6].Equals(""))
+            PictureUrl = contactArr[6];
+    }
 
     /// <summary>
     /// Create a new Contacts object and initialize the data structures responsible for storing multiple addresses, phone numbers, and emails.
@@ -30,6 +87,8 @@ public class Contact : IEquatable<Contact>
         Addresses = new List<Address>();
         Numbers = new List<Phone>();
         Emails = new List<string>();
+
+        attributes = new List<string>();
     }
 
     /// <summary>
@@ -42,7 +101,8 @@ public class Contact : IEquatable<Contact>
     /// <param name="numbers"></param>
     /// <param name="emails"></param>
     /// <param name="type"></param>
-    public Contact(string firstName, string lastName, Birthday bday, List<Address> addresses, List<Phone> numbers, List<string> emails, ContactCategory? type)
+    public Contact(string firstName, string lastName, Birthday bday, List<Address> addresses, List<Phone> numbers,
+        List<string> emails, ContactCategory? type)
     {
         this.FirstName = firstName;
         this.LastName = lastName;
@@ -50,8 +110,9 @@ public class Contact : IEquatable<Contact>
         this.Addresses = addresses;
         this.Numbers = numbers;
         this.Emails = emails;
-        
+
         this.Type = type ?? ContactCategory.Other;
+        attributes = new List<string>();
     }
 
     /// <summary>
@@ -119,7 +180,8 @@ public class Contact : IEquatable<Contact>
             if (newPhone.Equals(p))
                 canAdd = false;
         }
-        if(canAdd)
+
+        if (canAdd)
             Numbers.Add(newPhone);
     }
 
@@ -208,8 +270,38 @@ public class Contact : IEquatable<Contact>
         return code;
     }
 
+    /// <summary>
+    /// Formats the contact in a parsable string, designed to be saved to a file.
+    /// </summary>
+    /// <returns>Parsable string.</returns>
+    public string SaveString()
+    {
+        attributes.Clear();
+        attributes.Add(FirstName);
+        attributes.Add(LastName);
+        //attributes.Add(Bday.ToString()); // TODO: Need to implement and test birthdates.
+        attributes.Add(String.Join(",", Addresses));
+        List<string> nums = new List<string>();
+        foreach (Phone n in Numbers)
+        {
+            nums.Add(n.DisplayString());
+        }
+        attributes.Add(String.Join(",", nums));
+        attributes.Add( String.Join(",", Emails));
+        attributes.Add("" + Type);
+        attributes.Add(String.Join(",", PictureUrl));
+
+        return String.Join("|", attributes); 
+    }
+
+    // TODO: Implement this method once the GUI is created, formatting contacts to best integrate into the GUI.
+    /// <summary>
+    /// Standard string representation of a Contact, for use while still using the console with no other GUI elements.
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
-        return (FirstName + (LastName.Equals("") ? LastName : ", " + LastName) + "|| Phones: " + String.Join(" | ", Numbers) + " || Emails: " + String.Join(" | ", Emails) + " || PictureURL: " + PictureUrl);
+        return FirstName + (LastName.Equals("") ? "" : ", " + LastName) + ": " + String.Join(", ", Addresses) + " || " +
+               String.Join(", ", Numbers) + " || " + String.Join(", ", Emails) + " || " + Type + " || " + PictureUrl;
     }
 }

@@ -9,7 +9,7 @@ public class FileInputOutput
     /// Print the contents of the file to the console.
     /// </summary>
     /// <param name="file"></param>
-    public static void Print(string file)
+    public static void Print(String file)
     {
         try
         {
@@ -32,16 +32,15 @@ public class FileInputOutput
     /// </summary>
     /// <param name="oldFile"></param>
     /// <param name="newFile"></param>
-    public static void SaveWithLineNumbers(string oldFile, string newFile)
+    public static void SaveWithLineNumbers(String oldFile, string newFile)
     {
         
         using (StreamReader reader = new StreamReader(oldFile))
         using (StreamWriter writer = new StreamWriter(newFile))
         {
-            int line = 1;
             while (!reader.EndOfStream)
             {
-                writer.WriteLine($"{line++:00} {reader.ReadLine()}");
+                writer.WriteLine($"{reader.ReadLine()}");
             }
         }
 

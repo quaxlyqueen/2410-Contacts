@@ -3,7 +3,7 @@ using Microsoft.VisualBasic.FileIO;
 namespace Contacts;
 
 /// <summary>
-/// 
+/// Represents a file, and provides implementations for parsing contacts from a file.
 /// </summary>
 public class File
 {
@@ -11,17 +11,17 @@ public class File
     private string _filepath;
     private bool isGoogleCsv;
 
-    public File()
+    public File(string filepath)
     {
+        _filepath = filepath;
         Contacts = new List<Contact>();
     }
 
     /// <summary>
     /// Manages the parsing process and determines the correct parser to use based upon the filetype.
     /// </summary>
-    public void Parse(string filepath)
+    public void Parse()
     {
-        _filepath = filepath;
         String filetype = _filepath.Substring(_filepath.LastIndexOf('.'));
 
         switch (filetype)
@@ -45,12 +45,12 @@ public class File
     {
         List<string> contactInfo = new List<string>();
         using (TextFieldParser parser = new TextFieldParser(_filepath))
-        {                
+        {
             if (parser.PeekChars(5).Equals("Name,"))
                 isGoogleCsv = true;
             else
                 isGoogleCsv = false;
-            
+
             parser.ReadLine(); // skip header row
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(",");
@@ -59,9 +59,9 @@ public class File
                 //Processing row
                 string[] fields = parser.ReadFields();
                 foreach (string field in fields)
-                    if(!field.Equals("")) // skip blank fields
+                    if (!field.Equals("")) // skip blank fields
                         contactInfo.Add(field);
-                
+
                 parser.ReadLine(); // move to next line to read the next contact.
                 Parse(contactInfo); // with current contact information, generate and add the new contact.
                 contactInfo.Clear(); // clear contact information for next contact.
@@ -80,13 +80,13 @@ public class File
         Phone other = null;
         Contact c;
         string[] contact = csv.ToArray();
-        
+
         // Check if the csv is a google or outlook formatted csv.
         if (isGoogleCsv)
             c = new Contact(contact[1], contact[2].Contains("*") ? "" : contact[2], null);
         else
             c = new Contact(contact[0], contact[1].Contains("*") ? "" : contact[1], null);
-        
+
         // iterate through csv array
         for (int i = 0; i < contact.Length; i++)
         {
@@ -95,46 +95,48 @@ public class File
             {
                 case "Home":
                     home = ParsePhone(PhoneType.Home, contact[i + 1]);
-                    if(home != null)
+                    if (home != null)
                         c.AddPhone(home);
                     break;
                 case "Work":
                     work = ParsePhone(PhoneType.Work, contact[i + 1]);
-                    if(work != null)
+                    if (work != null)
                         c.AddPhone(work);
                     break;
                 case "Job":
                     work = ParsePhone(PhoneType.Work, contact[i + 1]);
-                    if(work != null)
+                    if (work != null)
                         c.AddPhone(work);
                     break;
                 case "Mobile":
                     cell = ParsePhone(PhoneType.Cell, contact[i + 1]);
-                    if(cell != null) 
+                    if (cell != null)
                         c.AddPhone(cell);
                     break;
                 case "Cell":
                     cell = ParsePhone(PhoneType.Cell, contact[i + 1]);
-                    if(cell != null) 
+                    if (cell != null)
                         c.AddPhone(cell);
                     break;
                 case "Other":
                     other = ParsePhone(PhoneType.Other, contact[i + 1]);
-                    if(other != null)
+                    if (other != null)
                         c.AddPhone(other);
                     break;
-                default: 
+                default:
                     other = ParsePhone(PhoneType.Other, contact[i]);
-                    if(other != null)
+                    if (other != null)
                         c.AddPhone(other);
                     break;
             }
-            
-            if(contact[i].Contains("@")) // detect an email address and add to the current contact.
+
+            if (contact[i].Contains("@")) // detect an email address and add to the current contact.
                 c.AddEmail(contact[i]);
-            if (contact[i].Contains("http") || contact[i].Contains("www.")) // detect a URL and add to the current contact.
+            if (contact[i].Contains("http") ||
+                contact[i].Contains("www.")) // detect a URL and add to the current contact.
                 c.PictureUrl = contact[i];
         }
+
         Contacts.Add(c);
     }
 
@@ -145,7 +147,7 @@ public class File
     {
         // TODO
     }
-    
+
     /// <summary>
     /// Parse the information contained by the .card file to generate a new Contacts object.
     /// </summary>
@@ -164,18 +166,20 @@ public class File
     {
         List<char> list = new List<char>();
         char[] characters = number.ToCharArray();
-        
+
         for (int i = 0; i < characters.Length; i++)
             if (Char.IsDigit(characters[i])) // if the character is a digit, add it to the list
                 list.Add(characters[i]);
 
         if (list.Count == 11) // remove the international code
-            list.RemoveAt(0); 
-        
+            list.RemoveAt(0);
+
         String outputNumber = String.Join("", list);
-        if (outputNumber.Length > 10 || outputNumber.Length < 10) // detect if this was an email or address labeled as a generic category, ie. "Home".
+        if (outputNumber.Length > 10 ||
+            outputNumber.Length <
+            10) // detect if this was an email or address labeled as a generic category, ie. "Home".
             return null;
-        
+
         return new Phone(outputNumber, type);
     }
 }
