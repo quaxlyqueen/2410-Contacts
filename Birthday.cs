@@ -3,12 +3,13 @@ namespace Contacts;
 /// <summary>
 /// Represents the birthday of a contact.
 /// </summary>
+/// <author>Josh A</author>
 public class Birthday : IEquatable<Birthday>
 {
     private readonly int day;
     private readonly int month;
     private readonly int year;
-    public int age { get; }
+    public int Age { get; }
 
     /// <summary>
     /// Creates a new Birthday object.
@@ -20,7 +21,7 @@ public class Birthday : IEquatable<Birthday>
         this.month = month;
         this.day = day;
         year = -1;
-        age = -1;
+        Age = -1;
     }
 
     /// <summary>
@@ -34,7 +35,7 @@ public class Birthday : IEquatable<Birthday>
         this.month = month;
         this.day = day;
         this.year = year;
-        age = 2023 - year;
+        Age = 2023 - year;
     }
 
     /// <summary>

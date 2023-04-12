@@ -83,7 +83,7 @@ public class FileIo
     }
 
     /// <summary>
-    /// Search the database for contacts with the provided first name.
+    /// Search the database for contacts with the provided first name. Utilizes LINQ.
     /// </summary>
     /// <param name="name"></param>
     public void SearchByFirstName(string name)
