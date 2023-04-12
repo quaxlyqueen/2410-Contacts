@@ -12,10 +12,11 @@ public class Contact : IEquatable<Contact>
     public List<Phone> Numbers { get; }
     public List<string> Emails { get; }
     public ContactCategory Type { get; set; }
+    public string PictureUrl { get; set; }
 
 
     /// <summary>
-    /// Create a new Contact object and initialize the data structures responsible for storing multiple addresses, phone numbers, and emails.
+    /// Create a new Contacts object and initialize the data structures responsible for storing multiple addresses, phone numbers, and emails.
     /// </summary>
     /// <param name="firstName">New contact's first name</param>
     /// <param name="lastName">New contact's last name</param>
@@ -32,7 +33,7 @@ public class Contact : IEquatable<Contact>
     }
 
     /// <summary>
-    /// Create a new Contact object.
+    /// Create a new Contacts object.
     /// </summary>
     /// <param name="firstName"></param>
     /// <param name="lastName"></param>
@@ -107,12 +108,19 @@ public class Contact : IEquatable<Contact>
     }
 
     /// <summary>
-    /// Add a new Phone to the contact.
+    /// Add a new Phone to the contact, if it does not already exist.
     /// </summary>
     /// <param name="newPhone">Phone object to add.</param>
     public void AddPhone(Phone newPhone)
     {
-        Numbers.Add(newPhone);
+        bool canAdd = true;
+        foreach (Phone p in Numbers)
+        {
+            if (newPhone.Equals(p))
+                canAdd = false;
+        }
+        if(canAdd)
+            Numbers.Add(newPhone);
     }
 
     /// <summary>
@@ -155,11 +163,11 @@ public class Contact : IEquatable<Contact>
         this.Type = type;
     }
 
-    // TODO: Need overloaded Equals methods for different situations. This is only checking if two Contact objects are equal, but an imported Contact may not be detected.
+    // TODO: Need overloaded Equals methods for different situations. This is only checking if two Contacts objects are equal, but an imported Contacts may not be detected.
     /// <summary>
     /// Determines if two contacts are equal, to avoid potential duplication.
     /// </summary>
-    /// <param name="contactToCompare">Contact to compare to. If null, returns false.</param>
+    /// <param name="contactToCompare">Contacts to compare to. If null, returns false.</param>
     /// <returns>Whether or not the two contacts are the same.</returns>
     public bool Equals(Contact? contactToCompare)
     {
@@ -172,7 +180,7 @@ public class Contact : IEquatable<Contact>
     /// <summary>
     /// Calculates the hashcode of a contact by combining the hashcodes of each field of a contact.
     /// </summary>
-    /// <returns>The Contact's hashcode</returns>
+    /// <returns>The Contacts's hashcode</returns>
     public override int GetHashCode()
     {
         int code = 17;
@@ -198,5 +206,10 @@ public class Contact : IEquatable<Contact>
         code *= Type.GetHashCode();
 
         return code;
+    }
+
+    public override string ToString()
+    {
+        return (FirstName + (LastName.Equals("") ? LastName : ", " + LastName) + "|| Phones: " + String.Join(" | ", Numbers) + " || Emails: " + String.Join(" | ", Emails) + " || PictureURL: " + PictureUrl);
     }
 }

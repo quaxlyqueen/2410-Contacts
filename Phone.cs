@@ -6,10 +6,10 @@ namespace Contacts;
 public class Phone : IEquatable<Phone>
 {
     private string number;
-    private PhoneType? type;
+    public PhoneType? Type { get; }
 
     /// <summary>
-    /// Accepts an input string in the format "1234567890" to create a new Phone object for a Contact.
+    /// Accepts an input string in the format "1234567890" to create a new Phone object for a Contacts.
     /// </summary>
     /// <param name="number"></param>
     /// <param name="type">If null, defaults to "Other"</param>
@@ -20,7 +20,7 @@ public class Phone : IEquatable<Phone>
             throw new ArgumentException("Input phone number should be in the format 1234567890.");
 
         this.number = number;
-        this.type = type;
+        this.Type = type;
     }
 
     /// <summary>
@@ -42,6 +42,6 @@ public class Phone : IEquatable<Phone>
     /// <returns>Formatted phone number</returns>
     public override string ToString()
     {
-        return "(" + number.Substring(0, 3) + ") " + number.Substring(3, 6) + " - " + number.Substring(6);
+        return "(" + number.Substring(0, 3) + ") " + number.Substring(3, 3) + " - " + number.Substring(6);
     }
 }

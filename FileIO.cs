@@ -125,11 +125,11 @@ public class FileIo
     /// <summary>
     /// Remove a contact from the database.
     /// </summary>
-    /// <param name="cToDelete">Contact object to find and remove.</param>
+    /// <param name="cToDelete">Contacts object to find and remove.</param>
     /// <exception cref="ArgumentException">Thrown if the contact is not stored in the database.</exception>
     public void Delete(Contact cToDelete)
     {
         if(!_contacts.Remove(cToDelete))
-            throw new ArgumentException("Contact does not exist.");
+            throw new ArgumentException("Contacts does not exist.");
     }
 }
