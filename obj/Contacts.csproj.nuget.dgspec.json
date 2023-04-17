@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marcus\\Documents\\SLCC\\Spring 2023\\CSIS-2410\\2410-Contacts\\Contacts.csproj": {}
+    "/home/jashton/dev/active/2410-contacts/Contacts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marcus\\Documents\\SLCC\\Spring 2023\\CSIS-2410\\2410-Contacts\\Contacts.csproj": {
+    "/home/jashton/dev/active/2410-contacts/Contacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marcus\\Documents\\SLCC\\Spring 2023\\CSIS-2410\\2410-Contacts\\Contacts.csproj",
+        "projectUniqueName": "/home/jashton/dev/active/2410-contacts/Contacts.csproj",
         "projectName": "Contacts",
-        "projectPath": "C:\\Users\\Marcus\\Documents\\SLCC\\Spring 2023\\CSIS-2410\\2410-Contacts\\Contacts.csproj",
-        "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marcus\\Documents\\SLCC\\Spring 2023\\CSIS-2410\\2410-Contacts\\obj\\",
+        "projectPath": "/home/jashton/dev/active/2410-contacts/Contacts.csproj",
+        "packagesPath": "/home/jashton/.nuget/packages/",
+        "outputPath": "/home/jashton/dev/active/2410-contacts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Marcus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/jashton/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,12 +48,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.3, 7.0.3]"
+            }
+          ],
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.103/RuntimeIdentifierGraph.json"
         }
       }
     }
