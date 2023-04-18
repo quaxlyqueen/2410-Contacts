@@ -30,10 +30,10 @@ public class File
                 ParseCsv();
                 break;
             case ".vcf":
-                ParseVcf();
+                ParseVCF();
                 break;
             case ".card":
-                ParseCard();
+                ParseVCF();
                 break;
         }
     }
@@ -140,21 +140,114 @@ public class File
         Contacts.Add(c);
     }
 
+
+
+
+
     /// <summary>
     /// Parse the information contained by the .vcf file to generate a new Contacts object.
     /// </summary>
-    private void ParseVcf()
+
+    private void ParseVCF()
     {
-        // TODO
+        using (StreamReader reader = new StreamReader(_filepath))
+        {
+            string line;
+            Contact contact = null;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line.StartsWith("BEGIN:VCARD"))
+                {
+                    contact = new Contact();
+                }
+                else if (line.StartsWith("FN:") && contact != null)
+                {
+
+
+                    //mabye wrong
+                    string myLine = line;
+                    int i = 0;
+                    while (true)
+                    {
+
+                        if (myLine[i].Equals(" "))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            contact.FirstName += myLine[i];
+                            i++;
+
+                        }
+
+                    }
+                    //now at last name
+                    while (true)
+                    {
+                        //mabye change
+                        if (i == myLine.Length)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            contact.LastName += myLine[i];
+
+
+                        }
+
+                    }
+                }
+                else if (line.StartsWith("TEL;TYPE=") && contact != null)
+                {
+                    int typeEndIndex = line.IndexOf(':', 9);
+                    string phoneType = line.Substring(9, typeEndIndex - 9).ToUpper();
+                    string phoneNumber = line.Substring(typeEndIndex + 1);
+
+                    PhoneType parsedPhoneType = PhoneType.Other;
+
+                    switch (phoneType)
+                    {
+                        case "HOME":
+                            parsedPhoneType = PhoneType.Home;
+                            break;
+                        case "WORK":
+                            parsedPhoneType = PhoneType.Work;
+                            break;
+                        case "CELL":
+                            parsedPhoneType = PhoneType.Cell;
+                            break;
+                        case "OTHER":
+                            parsedPhoneType = PhoneType.Other;
+                            break;
+                    }
+
+                    Phone phone = ParsePhone(parsedPhoneType, phoneNumber);
+                    if (phone != null)
+                    {
+                        contact.AddPhone(phone);
+                    }
+                }
+                else if (line.StartsWith("EMAIL:") && contact != null)
+                {
+                    string email = line.Substring(6);
+                    contact.AddEmail(email);
+                }
+                else if (line.StartsWith("PHOTO;VALUE=URI:") && contact != null)
+                {
+                    string pictureUrl = line.Substring(15);
+                    contact.PictureUrl = pictureUrl;
+                }
+                else if (line.StartsWith("END:VCARD") && contact != null)
+                {
+                    Contacts.Add(contact);
+                    contact = null;
+                }
+            }
+        }
     }
 
-    /// <summary>
-    /// Parse the information contained by the .card file to generate a new Contacts object.
-    /// </summary>
-    private void ParseCard()
-    {
-        // TODO
-    }
 
     /// <summary>
     /// Parses any format of a phone number into the acceptable format 1234567890.

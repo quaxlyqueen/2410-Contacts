@@ -15,6 +15,8 @@ public class Contact : IEquatable<Contact>
     public string PictureUrl { get; set; }
     private List<string> attributes { get; }
 
+
+
     /// <summary>
     /// Loads a saved contact and creates a new Contact object based upon the saved information.
     /// </summary>
@@ -113,6 +115,9 @@ public class Contact : IEquatable<Contact>
 
         this.Type = type ?? ContactCategory.Other;
         attributes = new List<string>();
+    }
+    public Contact() { 
+    
     }
 
     /// <summary>

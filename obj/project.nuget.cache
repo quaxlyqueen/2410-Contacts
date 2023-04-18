@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QbLTmB2wCk8INmRRJETSz4haMMF9kGZc3/iJ5ay2U+UnrNt9OykkzfobDgG8WMKhTHO/zYOVo8IWjYhm6q8vlQ==",
+  "dgSpecHash": "5M4b8qmXS8o3nAr1EFdzSMShXZWtlrzJOES28p4ss6tLZCrwiDtlA0KMT4nDy1axYuUOGwvLl+0NMSeC1D4lqg==",
   "success": true,
-  "projectFilePath": "/home/jashton/dev/active/2410-contacts/Contacts.csproj",
-  "expectedPackageFiles": [
-    "/home/jashton/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
