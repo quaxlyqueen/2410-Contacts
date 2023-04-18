@@ -15,4 +15,8 @@ public class AddContactsModel : PageModel
     public void OnGet()
     {
     }
+
+    private class Asdf {
+
+    }
 }
