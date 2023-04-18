@@ -9,49 +9,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Contacts
 build_property.RootNamespace = Contacts
-build_property.ProjectDir = C:\Users\overw\Source\Repos\2410-Contacts\
+build_property.ProjectDir = C:\Users\overw\source\repos\2410-Contacts\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\overw\Source\Repos\2410-Contacts
+build_property.MSBuildProjectDirectory = C:\Users\overw\source\repos\2410-Contacts
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/AddContact.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/AddContact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ29udGFjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/ExportContacts.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/ExportContacts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhwb3J0Q29udGFjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/ImportContacts.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/ImportContacts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW1wb3J0Q29udGFjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/Index.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/Privacy.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/Sort/ProductSearch.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/Sort/ProductSearch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxQcm9kdWN0U2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/_ViewImports.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/_ViewStart.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/overw/Source/Repos/2410-Contacts/Pages/Shared/_Layout.cshtml]
+[C:/Users/overw/source/repos/2410-Contacts/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5rocjcq8by

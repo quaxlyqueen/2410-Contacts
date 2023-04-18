@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\overw\\Source\\Repos\\2410-Contacts\\Contacts.csproj": {}
+    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\overw\\Source\\Repos\\2410-Contacts\\Contacts.csproj": {
+    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\overw\\Source\\Repos\\2410-Contacts\\Contacts.csproj",
+        "projectUniqueName": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
         "projectName": "Contacts",
-        "projectPath": "C:\\Users\\overw\\Source\\Repos\\2410-Contacts\\Contacts.csproj",
+        "projectPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
         "packagesPath": "C:\\Users\\overw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\overw\\Source\\Repos\\2410-Contacts\\obj\\",
+        "outputPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
