@@ -1,9 +1,10 @@
-namespace Contacts;
-
-public enum ContactCategory
+namespace Contacts
 {
-    Family,
-    Friends,
-    Work,
-    Other
+    public enum ContactCategory
+    {
+        Family,
+        Friends,
+        Work,
+        Other
+    }
 }

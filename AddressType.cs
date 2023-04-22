@@ -1,9 +1,11 @@
-namespace Contacts;
-
-public enum AddressType
+namespace Contacts
 {
-    Home,
-    Business,
-    Work,
-    Other
+
+    public enum AddressType
+    {
+        Home,
+        Business,
+        Work,
+        Other
+    }
 }

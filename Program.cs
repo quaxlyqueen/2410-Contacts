@@ -1,5 +1,8 @@
-﻿using Contacts;
-using File = Contacts.File;
+﻿using System.Diagnostics;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+// using Contacts;
 
 /// <summary>
 /// Test program for the contacts manager. Currently, to use, export a contacts list from your Google account or iCloud, in a CSV format. Save this file to bin/Debug/net7.0/testResources.
@@ -9,45 +12,67 @@ using File = Contacts.File;
 public class Program
 {
     public static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
-
-        // Add services to the container.
-        builder.Services.AddRazorPages();
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
-        {
-            app.UseExceptionHandler("/Error");
-        }
-        app.UseStaticFiles();
-
-        app.UseRouting();
-
-        app.UseAuthorization();
-
-        app.MapRazorPages();
-
-        app.Run();
-
-        FileIo fileio = new FileIo();
+    {       
+        // // Uncomment to save to a new file.
+        // /*
+        // File file = new File("App_Data/testResources/contacts.csv");
+        //     fileio.Import(file);
+        //     fileio.Save();
+        // */
         
-        // Uncomment to save to a new file.
-        /*
-        File file = new File("App_Data/testResources/contacts.csv");
-            fileio.Import(file);
-            fileio.Save();
-        */
-        
-        // Uncomment to load from a saved file.
-        /*
-        fileio.Load();
-        foreach (Contact c in fileio.QueryState)
-        {
-            Console.WriteLine(c);
+        // // Uncomment to load from a saved file.
+        // /*
+        // fileio.Load();
+        // foreach (Contact c in fileio.QueryState)
+        // {
+        //     Console.WriteLine(c);
+        // }
+        // */
+
+        Console.Clear();
+        System.Console.WriteLine("CONTACTS PROJECT A05");
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+            Console.WriteLine("Windows");
         }
-        */
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+            Console.WriteLine("Linux");
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+            Console.WriteLine("MacOS");
+        }
+
+        System.Console.Write("> ");
+        string? commandString = Console.ReadLine();
+        while (commandString != "exit") {
+            string[] arguments = commandString.Split(" ");
+            string command = arguments[0];
+            arguments[0] = ""; // TODO LATER
+
+            switch (command.ToLower()) {
+                case "add":
+                    break;
+                case "remove":
+                    break;
+                case "view":
+                    Process.Start("notepad.exe", "yourContacts.save");
+                    break;
+                case "import":
+                    // potential .contains and makes sure that you don't need to import the same file twice
+
+                    break;
+                case "export":
+                    break;
+                default:
+                    System.Console.WriteLine("Invalid Opperation. Try again.");
+                    break;
+            }
+
+            // DEAD LAST DO NOT TOUCHY
+            Console.Write("> ");
+            commandString = Console.ReadLine();
+        }
+        
+        // Console.WriteLine($"COMMAND: {command}\nARGS: {string.Join(", ", arguments)}");
     }
 }

@@ -1,9 +1,10 @@
-namespace Contacts;
-
-public enum PhoneType
+namespace Contacts
 {
-    Cell,
-    Work,
-    Home,
-    Other
+    public enum PhoneType
+    {
+        Cell,
+        Work,
+        Home,
+        Other
+    }
 }

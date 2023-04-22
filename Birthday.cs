@@ -1,64 +1,67 @@
-namespace Contacts;
+using System;
 
-/// <summary>
-/// Represents the birthday of a contact.
-/// </summary>
-/// <author>Josh A</author>
-public class Birthday : IEquatable<Birthday>
+namespace Contacts
 {
-    private readonly int day;
-    private readonly int month;
-    private readonly int year;
-    public int Age { get; }
-
     /// <summary>
-    /// Creates a new Birthday object.
+    /// Represents the birthday of a contact.
     /// </summary>
-    /// <param name="month"></param>
-    /// <param name="day"></param>
-    public Birthday(int month, int day)
+    /// <author>Josh A</author>
+    public class Birthday : IEquatable<Birthday>
     {
-        this.month = month;
-        this.day = day;
-        year = -1;
-        Age = -1;
-    }
+        private readonly int day;
+        private readonly int month;
+        private readonly int year;
+        public int Age { get; }
 
-    /// <summary>
-    /// Creates a new Birthday and determines the age.
-    /// </summary>
-    /// <param name="month"></param>
-    /// <param name="day"></param>
-    /// <param name="year"></param>
-    public Birthday(int month, int day, int year)
-    {
-        this.month = month;
-        this.day = day;
-        this.year = year;
-        Age = 2023 - year;
-    }
+        /// <summary>
+        /// Creates a new Birthday object.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        public Birthday(int month, int day)
+        {
+            this.month = month;
+            this.day = day;
+            year = -1;
+            Age = -1;
+        }
 
-    /// <summary>
-    /// Determines if two birthdays are equal, to avoid potential duplication.
-    /// </summary>
-    /// <param name="birthdayToCompare">Birthday to compare to. If null, returns false.</param>
-    /// <returns>Whether or not the two birthdays are the same.</returns>
-    public bool Equals(Birthday? birthdayToCompare)
-    {
-        if (birthdayToCompare == null)
-            return false;
+        /// <summary>
+        /// Creates a new Birthday and determines the age.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        /// <param name="year"></param>
+        public Birthday(int month, int day, int year)
+        {
+            this.month = month;
+            this.day = day;
+            this.year = year;
+            Age = 2023 - year;
+        }
 
-        return this.ToString().Equals(birthdayToCompare.ToString());
-    }
+        /// <summary>
+        /// Determines if two birthdays are equal, to avoid potential duplication.
+        /// </summary>
+        /// <param name="birthdayToCompare">Birthday to compare to. If null, returns false.</param>
+        /// <returns>Whether or not the two birthdays are the same.</returns>
+        public bool Equals(Birthday? birthdayToCompare)
+        {
+            if (birthdayToCompare == null)
+                return false;
 
-    /// <summary>
-    /// Formats a birthday to "MM-DD" or "MM-DD-YYYY", if a birthyear was provided.
-    /// </summary>
-    /// <returns>Formatted birthdate.</returns>
-    public override string ToString()
-    {
-        if (year == -1)
-            return month + "-" + day;
-        return month + "-" + day + "-" + year;
+            return this.ToString().Equals(birthdayToCompare.ToString());
+        }
+
+        /// <summary>
+        /// Formats a birthday to "MM-DD" or "MM-DD-YYYY", if a birthyear was provided.
+        /// </summary>
+        /// <returns>Formatted birthdate.</returns>
+        public override string ToString()
+        {
+            if (year == -1)
+                return month + "-" + day;
+            return month + "-" + day + "-" + year;
+        }
     }
 }

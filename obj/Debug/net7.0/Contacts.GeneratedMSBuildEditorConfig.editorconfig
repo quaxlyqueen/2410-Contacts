@@ -9,49 +9,9 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Contacts
 build_property.RootNamespace = Contacts
-build_property.ProjectDir = /home/jashton/dev/active/2410-contacts/
+build_property.ProjectDir = C:\Users\Marcus\Desktop\contacts-console\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/jashton/dev/active/2410-contacts
+build_property.MSBuildProjectDirectory = C:\Users\Marcus\Desktop\contacts-console
 build_property._RazorSourceGeneratorDebug = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/AddContact.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkQ29udGFjdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/ExportContacts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhwb3J0Q29udGFjdHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/ImportContacts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW1wb3J0Q29udGFjdHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/Sort/ProductSearch.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU29ydC9Qcm9kdWN0U2VhcmNoLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/jashton/dev/active/2410-contacts/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-d3uad7lfk3
