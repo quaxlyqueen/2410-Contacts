@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Contacts;
 // using Contacts;
 
 /// <summary>
@@ -12,14 +13,14 @@ using System.Runtime.InteropServices;
 public class Program
 {
     public static void Main(string[] args)
-    {       
+    {
         // // Uncomment to save to a new file.
         // /*
         // File file = new File("App_Data/testResources/contacts.csv");
         //     fileio.Import(file);
         //     fileio.Save();
         // */
-        
+
         // // Uncomment to load from a saved file.
         // /*
         // fileio.Load();
@@ -32,27 +33,36 @@ public class Program
         Console.Clear();
         System.Console.WriteLine("CONTACTS PROJECT A05");
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
             Console.WriteLine("Windows");
         }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
             Console.WriteLine("Linux");
         }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
             Console.WriteLine("MacOS");
         }
 
         System.Console.Write("> ");
         string? commandString = Console.ReadLine();
-        while (commandString != "exit") {
+        while (commandString != "exit")
+        {
             string[] arguments = commandString.Split(" ");
             string command = arguments[0];
             arguments[0] = ""; // TODO LATER
 
-            switch (command.ToLower()) {
+            switch (command.ToLower())
+            {
                 case "add":
+                    Contact.AddContact(arguments[1], arguments[2], arguments[3], arguments[4]);
                     break;
                 case "remove":
+                    string fullname = arguments[1];
+                    fullname += " " + arguments[2];
+                    Contact.RemoveContact(fullname);
                     break;
                 case "view":
                     Process.Start("notepad.exe", "yourContacts.save");
@@ -72,7 +82,7 @@ public class Program
             Console.Write("> ");
             commandString = Console.ReadLine();
         }
-        
+
         // Console.WriteLine($"COMMAND: {command}\nARGS: {string.Join(", ", arguments)}");
     }
 }

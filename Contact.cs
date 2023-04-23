@@ -30,13 +30,13 @@ namespace Contacts
             Addresses = new List<Address>();
             Numbers = new List<Phone>();
             Emails = new List<string>();
-            
+
             if (contactArr[2].Length > 0)
             {
                 string[] addr = contactArr[2].Split(",");
                 foreach (string a in addr)
                 {
-                    if(!a.Equals(""))
+                    if (!a.Equals(""))
                         Addresses.Add(new Address(a, null)); // TODO: Need to find addr type.
                 }
             }
@@ -46,7 +46,7 @@ namespace Contacts
                 string[] phones = contactArr[3].Split(",");
                 foreach (string p in phones)
                 {
-                    if(!p.Equals(""))
+                    if (!p.Equals(""))
                         Numbers.Add(new Phone(p, null)); // TODO: Need to find phone type.
                 }
             }
@@ -56,7 +56,7 @@ namespace Contacts
                 string[] emails = contactArr[4].Split(",");
                 foreach (string e in emails)
                 {
-                    if(!e.Equals(""))
+                    if (!e.Equals(""))
                         Emails.Add(e);
                 }
             }
@@ -117,8 +117,9 @@ namespace Contacts
             this.Type = type ?? ContactCategory.Other;
             attributes = new List<string>();
         }
-        public Contact() { 
-        
+        public Contact()
+        {
+
         }
 
         /// <summary>
@@ -293,11 +294,11 @@ namespace Contacts
                 nums.Add(n.DisplayString());
             }
             attributes.Add(String.Join(",", nums));
-            attributes.Add( String.Join(",", Emails));
+            attributes.Add(String.Join(",", Emails));
             attributes.Add("" + Type);
             attributes.Add(String.Join(",", PictureUrl));
 
-            return String.Join("|", attributes); 
+            return String.Join("|", attributes);
         }
 
         // TODO: Implement this method once the GUI is created, formatting contacts to best integrate into the GUI.
@@ -310,5 +311,90 @@ namespace Contacts
             return FirstName + (LastName.Equals("") ? "" : ", " + LastName) + ": " + String.Join(", ", Addresses) + " || " +
                 String.Join(", ", Numbers) + " || " + String.Join(", ", Emails) + " || " + Type + " || " + PictureUrl;
         }
+
+
+
+        //full name needs to be firstname lastname
+
+
+
+        public static void RemoveContact(string fullName)
+        {
+            fullName = fullName.ToLower();
+
+            string[] arguments = fullName.Split(" ");
+
+            string firstName = arguments[0];
+            string lastName = arguments[1];
+
+            string filePath = "yourContacts.save";
+            List<string> linesToKeep = new List<string>();
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null) // Read line by line until EOF
+                    {
+                        if (!(line.ToLower().Contains(firstName) && line.ToLower().Contains(lastName)))
+                        {
+                            linesToKeep.Add(line);
+                        }
+                    }
+                }
+
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (string line in linesToKeep)
+                    {
+                        writer.WriteLine(line);
+                    }
+                }
+
+                Console.WriteLine("Contact removed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading or writing the file: " + ex.Message);
+            }
+        }
+
+
+
+
+        public static void AddContact(string firstName, string lastName, string phoneNumber ,String ContactCategory)
+        {
+       
+
+
+           
+            
+
+            string filePath = "yourContacts.save";
+            string contactLine = $"{firstName}|{lastName} | {phoneNumber} | {ContactCategory}";
+
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath, true)) // Append mode is set to true
+                {
+                    writer.WriteLine(contactLine);
+                }
+
+                Console.WriteLine("Contact added successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error writing to the file: " + ex.Message);
+            }
+        }
     }
-}
+
+
+
+
+
+
+    }
+
+

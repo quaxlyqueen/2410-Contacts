@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marcus\\Desktop\\contacts-console\\Contacts.csproj": {}
+    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marcus\\Desktop\\contacts-console\\Contacts.csproj": {
+    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marcus\\Desktop\\contacts-console\\Contacts.csproj",
+        "projectUniqueName": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
         "projectName": "Contacts",
-        "projectPath": "C:\\Users\\Marcus\\Desktop\\contacts-console\\Contacts.csproj",
-        "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marcus\\Desktop\\contacts-console\\obj\\",
+        "projectPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
+        "packagesPath": "C:\\Users\\overw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Marcus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\overw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
