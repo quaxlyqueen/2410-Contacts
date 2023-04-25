@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "P3j8rU+EQ3dkmqVrP3SbVMU5Xbd47w5qGSpCwJIkf1sCjmfrBVtlzL/1MoyR2WPVDu7Pu1AtwYcSz4EegPyWYg==",
+  "dgSpecHash": "dJ2fYELN8lOKblMCzlpejRutgidCqccGDchWO774LLNgpaCE93c0HTsRxUsEIAPdEdLLgWSDrNgKNPLnt9cUIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Marcus\\Desktop\\contacts-console\\Contacts.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Marcus\\.nuget\\packages\\crayon\\2.0.69\\crayon.2.0.69.nupkg.sha512"
+  ],
   "logs": []
 }

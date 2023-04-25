@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.IO;
 using Contacts;
+using static Crayon.Output;
+using Crayon;
 
 /// <summary>
 /// Test program for the contacts manager. Currently, to use, export a contacts list from your Google account or iCloud, in a CSV format. Save this file to bin/Debug/net7.0/testResources.
@@ -18,19 +20,17 @@ public class Program
         
         Console.Clear();
         Console.ResetColor();
+        var rainbow = new Rainbow(0.5);
         // Console.WriteLine("CONTACTS PROJECT A05");
-        Console.WriteLine("""
-   _____               _                _          __  __                               
-  / ____|             | |              | |        |  \/  |                              
- | |      ___   _ __  | |_  __ _   ___ | |_  ___  | \  / |  ___  _ __  __ _   ___  _ __ 
- | |     / _ \ | '_ \ | __|/ _` | / __|| __|/ __| | |\/| | / _ \| '__|/ _` | / _ \| '__|
- | |____| (_) || | | || |_| (_| || (__ | |_ \__ \ | |  | ||  __/| |  | (_| ||  __/| |   
-  \_____|\___/ |_| |_| \__|\__,_| \___| \__||___/ |_|  |_| \___||_|   \__, | \___||_|   
-                                                                       __/ |            
-                                                                      |___/             
-""");
-
-        System.Console.Write("> ");
+        Console.WriteLine(Bold("""
+   ___               _                _                                               
+  / __\ ___   _ __  | |_  __ _   ___ | |_  ___    /\/\    ___  _ __  __ _   ___  _ __ 
+ / /   / _ \ | '_ \ | __|/ _` | / __|| __|/ __|  /    \  / _ \| '__|/ _` | / _ \| '__|
+/ /___| (_) || | | || |_| (_| || (__ | |_ \__ \ / /\/\ \|  __/| |  | (_| ||  __/| |   
+\____/ \___/ |_| |_| \__|\__,_| \___| \__||___/ \/    \/ \___||_|   \__, | \___||_|   
+                                                                    |___/             
+"""));
+        Console.Write("> ");
         string? commandString = Console.ReadLine();
         while (commandString != "exit") {
             List<String> arguments = commandString.Split(" ").ToList<String>();
@@ -71,26 +71,24 @@ public class Program
                     break;
                 case "help":
                     Console.WriteLine("Contacts Merger Help\n");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("ADD {0} {1}", new string('.', 8), "<FirstName> <LastName> <Phone#> <PhoneCategory>");
-                    Console.WriteLine("Adds a new contact to the save file");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("REMOVE {0} {1}", new string('.', 5), "<FirstName> <LastName>");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("IMPORT {0} {1}", new string('.', 5), "<filePath (.csv) or (.vcf)>");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("EXPORT {0} {1}", new string('.', 5), "<newFileName>");
-                    Console.ResetColor();
+                    Console.WriteLine(Bold(Green("ADD {0} {1}")), new string('.', 8), "<FirstName> <LastName> <Phone#> <PhoneCategory>");
+                    Console.WriteLine("Adds a new contact to the final save file");
+                    Console.WriteLine(Bold(Yellow("REMOVE {0} {1}")), new string('.', 5), "<FirstName> <LastName>");
+                    Console.WriteLine("Removes contact from final save file");
+                    Console.WriteLine(Bold(Blue("IMPORT {0} {1}")), new string('.', 5), "<filePath (.csv) or (.vcf)>");
+                    Console.WriteLine($"Brings in contacts from either a {Red(".csv")} file or a {Red(".vcf")} file.");
+                    Console.WriteLine(Bold(Cyan("EXPORT {0} {1}")), new string('.', 5), "<newFileName>");
+                    Console.WriteLine($"Takes all contacts taken from {Blue("IMPORT")} and compiles them into a pipe-separated file.");
                     break;
                 case "":
                     break;
                 default:
-                    System.Console.WriteLine("Invalid Opperation. Try again.");
+                    Console.WriteLine("Invalid Opperation. Try again.");
                     break;
             }
 
             // DEAD LAST DO NOT TOUCHY
-            Console.Write("> ");
+            Console.Write(rainbow.Next().Bold().Text("> "));
             commandString = Console.ReadLine();
         }
 

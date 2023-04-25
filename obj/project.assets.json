@@ -1,11 +1,36 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Crayon/2.0.69": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Crayon.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Crayon.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Crayon/2.0.69": {
+      "sha512": "eJHxoMTfhZs1782YUIMafXIDTPcTwAV5I3MNsl2d4Mn61/h3ABPMSzHwzigL/NO7BrCKRoP4gHJuERpLHdSCvg==",
+      "type": "package",
+      "path": "crayon/2.0.69",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "crayon.2.0.69.nupkg.sha512",
+        "crayon.nuspec",
+        "lib/netstandard2.0/Crayon.dll"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Crayon >= 2.0.69"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Marcus\\.nuget\\packages\\": {}
@@ -45,6 +70,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "Crayon": {
+            "target": "Package",
+            "version": "[2.0.69, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
