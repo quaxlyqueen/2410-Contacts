@@ -27,11 +27,11 @@ namespace Contacts
         ///     Facilitates incoming compatability with .vcf, .card, and .csv filetypes for contacts into this console-based
         ///     contacts manager.
         /// </summary>
-        /// <param name="file"></param>
-        public void Import(Resolver file)
+        /// <param name="resolver"></param>
+        public void Import(Resolver resolver)
         {
-            file.Parse();
-            List<Contact> contacts = file.Contacts;
+            resolver.Parse();
+            List<Contact> contacts = resolver.Contacts;
             foreach (Contact c in contacts)
                 _contacts.Add(c);
         }
@@ -49,7 +49,7 @@ namespace Contacts
         /// Save the contacts in the database to a file.
         /// </summary>
         /// <param name="newFile"></param>
-        public void Save()
+        public void Save(string targetFilePath)
         {
             using (StreamWriter writer = new StreamWriter("yourContacts.save"))
             {

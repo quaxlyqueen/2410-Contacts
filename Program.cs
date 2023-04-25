@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
 using System;
+using System.Linq;
 using System.IO;
-using System.Runtime.InteropServices;
-// using Contacts;
+using Contacts;
+using System.Collections.Generic;
 
 /// <summary>
 /// Test program for the contacts manager. Currently, to use, export a contacts list from your Google account or iCloud, in a CSV format. Save this file to bin/Debug/net7.0/testResources.
@@ -28,26 +29,17 @@ public class Program
         //     Console.WriteLine(c);
         // }
         // */
-
+        FileIO fileIO = new FileIO();
+        Resolver? resolver;
+        
         Console.Clear();
-        System.Console.WriteLine("CONTACTS PROJECT A05");
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-            Console.WriteLine("Windows");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
-            Console.WriteLine("Linux");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
-            Console.WriteLine("MacOS");
-        }
-
-        System.Console.Write("> ");
+        Console.WriteLine("CONTACTS PROJECT A05");
+        Console.Write("> "); // Command Prompt
         string? commandString = Console.ReadLine();
         while (commandString != "exit") {
-            string[] arguments = commandString.Split(" ");
+            List<string> arguments = commandString.Split(" ").ToList<string>();
             string command = arguments[0];
-            arguments[0] = ""; // TODO LATER
+            arguments.RemoveAt(0);
 
             switch (command.ToLower()) {
                 case "add":
@@ -58,10 +50,21 @@ public class Program
                     Process.Start("notepad.exe", "yourContacts.save");
                     break;
                 case "import":
-                    // potential .contains and makes sure that you don't need to import the same file twice
-
+                    if (arguments.Count <= 0)
+                    {
+                        System.Console.WriteLine("This command requires an argument. Use \"help\" for more info.");
+                        break;
+                    }
+                    resolver = new Resolver(@arguments[0]);
+                    fileIO.Import(resolver);
+                    fileIO.Save(@arguments[0]);
+                    Console.WriteLine("NEW FILE MADE (yourContacts.save)");
                     break;
                 case "export":
+                    break;
+                case "help":
+                    break;
+                case "":
                     break;
                 default:
                     System.Console.WriteLine("Invalid Opperation. Try again.");

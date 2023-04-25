@@ -12,13 +12,13 @@ namespace Contacts
     public class Resolver
     {
         public List<Contact> Contacts { get; set; }
-        private string _filepath;
+        internal string _filepath;
         private bool isGoogleCsv;
 
         public Resolver(string filepath)
         {
             _filepath = filepath;
-            if (File.Exists(_filepath))
+            if (!File.Exists(_filepath))
                 throw new InvalidOperationException("File does not exist.");
 
             Contacts = new List<Contact>();
