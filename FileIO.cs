@@ -48,10 +48,10 @@ namespace Contacts
         /// <summary>
         /// Save the contacts in the database to a file.
         /// </summary>
-        /// <param name="newFile"></param>
-        public void Save(string targetFilePath)
+        /// <param name="targetFilePath">Path to the file on computer</param>
+        public void Save(string newFileName)
         {
-            using (StreamWriter writer = new StreamWriter("yourContacts.save"))
+            using (StreamWriter writer = new StreamWriter($"{newFileName}.save"))
             {
                 foreach (Contact c in _contacts)
                 {

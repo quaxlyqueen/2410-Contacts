@@ -13,26 +13,22 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // // Uncomment to save to a new file.
-        // /*
-        // File file = new File("App_Data/testResources/contacts.csv");
-        //     fileio.Import(file);
-        //     fileio.Save();
-        // */
-
-        // // Uncomment to load from a saved file.
-        // /*
-        // fileio.Load();
-        // foreach (Contact c in fileio.QueryState)
-        // {
-        //     Console.WriteLine(c);
-        // }
-        // */
         FileIO fileIO = new FileIO();
         Resolver? resolver;
         
         Console.Clear();
-        System.Console.WriteLine("CONTACTS PROJECT A05");
+        Console.ResetColor();
+        // Console.WriteLine("CONTACTS PROJECT A05");
+        Console.WriteLine("""
+   _____               _                _          __  __                               
+  / ____|             | |              | |        |  \/  |                              
+ | |      ___   _ __  | |_  __ _   ___ | |_  ___  | \  / |  ___  _ __  __ _   ___  _ __ 
+ | |     / _ \ | '_ \ | __|/ _` | / __|| __|/ __| | |\/| | / _ \| '__|/ _` | / _ \| '__|
+ | |____| (_) || | | || |_| (_| || (__ | |_ \__ \ | |  | ||  __/| |  | (_| ||  __/| |   
+  \_____|\___/ |_| |_| \__|\__,_| \___| \__||___/ |_|  |_| \___||_|   \__, | \___||_|   
+                                                                       __/ |            
+                                                                      |___/             
+""");
 
         System.Console.Write("> ");
         string? commandString = Console.ReadLine();
@@ -44,11 +40,11 @@ public class Program
             switch (command.ToLower())
             {
                 case "add":
-                    Contact.AddContact(arguments[1], arguments[2], arguments[3], arguments[4]);
+                    Contact.AddContact(arguments[0], arguments[1], arguments[2], arguments[3]);
                     break;
                 case "remove":
-                    string fullname = arguments[1];
-                    fullname += " " + arguments[2];
+                    string fullname = arguments[0];
+                    fullname += " " + arguments[1];
                     Contact.RemoveContact(fullname);
                     break;
                 case "view":
@@ -61,13 +57,30 @@ public class Program
                         break;
                     }
                     resolver = new Resolver(@arguments[0]);
+                    
                     fileIO.Import(resolver);
-                    fileIO.Save(@arguments[0]);
-                    Console.WriteLine("NEW FILE MADE (yourContacts.save)");
                     break;
                 case "export":
+                    if (arguments.Count <= 0)
+                    {
+                        System.Console.WriteLine("This command requires an argument. Use \"help\" for more info.");
+                        break;
+                    }
+                    fileIO.Save(arguments[0]); // probably doesn't need new fileName due to Contact.AddContact and Contact.RemoveContact
+                    // TODO: Some way to tell them that it was saved to a certain spot in their computer
                     break;
                 case "help":
+                    Console.WriteLine("Contacts Merger Help\n");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("ADD {0} {1}", new string('.', 8), "<FirstName> <LastName> <Phone#> <PhoneCategory>");
+                    Console.WriteLine("Adds a new contact to the save file");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("REMOVE {0} {1}", new string('.', 5), "<FirstName> <LastName>");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("IMPORT {0} {1}", new string('.', 5), "<filePath (.csv) or (.vcf)>");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("EXPORT {0} {1}", new string('.', 5), "<newFileName>");
+                    Console.ResetColor();
                     break;
                 case "":
                     break;

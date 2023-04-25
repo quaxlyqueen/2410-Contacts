@@ -70,7 +70,7 @@ namespace Contacts
                             contactInfo.Add(field);
 
                     parser.ReadLine(); // move to next line to read the next contact.
-                    Parse(contactInfo); // with current contact information, generate and add the new contact.
+                    ConvertToContact(contactInfo); // with current contact information, generate and add the new contact.
                     contactInfo.Clear(); // clear contact information for next contact.
                 }
             }
@@ -79,7 +79,7 @@ namespace Contacts
         /// <summary>
         /// Parse the information contained by a Google formatted .csv file to generate a new Contacts object.
         /// </summary>
-        private void Parse(List<string> csv)
+        private void ConvertToContact(List<string> csv)
         {
             Phone home = null;
             Phone work = null;

@@ -9,17 +9,9 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Contacts
 build_property.RootNamespace = Contacts
-<<<<<<< HEAD
-build_property.ProjectDir = c:\Users\Marcus\Desktop\contacts-console\
+build_property.ProjectDir = C:\Users\Marcus\Desktop\contacts-console\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\Marcus\Desktop\contacts-console
-=======
-build_property.ProjectDir = C:\Users\overw\source\repos\2410-Contacts\
-build_property.RazorLangVersion = 7.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\overw\source\repos\2410-Contacts
->>>>>>> 46159f5c54deb89b9b366428e2364924ee7abd3a
+build_property.MSBuildProjectDirectory = C:\Users\Marcus\Desktop\contacts-console
 build_property._RazorSourceGeneratorDebug = 
