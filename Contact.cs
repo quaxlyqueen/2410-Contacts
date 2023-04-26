@@ -360,7 +360,7 @@ namespace Contacts
 
 
 
-        public static void AddContact(string firstName, string lastName, string phoneNumber, String ContactCategory)
+        public static void AddContact(string firstName, string lastName, string phoneNumber, string ContactCategory)
         {
             string filePath = "yourContacts.save";
             string contactLine = $"{firstName}|{lastName} | {phoneNumber} | {ContactCategory}";
