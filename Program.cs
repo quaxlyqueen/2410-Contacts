@@ -28,13 +28,20 @@ public class Program
 \____/ \___/ |_| |_| \__|\__,_| \___| \__||___/ \/    \/ \___||_|   \__, | \___||_|   
                                                                     |___/             
 """));
+        DrawLines();
+        Console.Write("> ");
+        //  int l = i;
+
         Point point = new Point(Console.CursorLeft, Console.CursorTop++);
         // Console.WriteLine(Environment.GetEnvironmentVariable("HOMEDRIVE"));
         bool isDebug = false;
         bool isExported = false;
-        Console.WriteLine($"{Cyan(new string('*', Console.BufferWidth - 3))}");
-        Console.Write("> ");
-        writeHelpCommand(90, 7);
+        //  int current = Console.BufferWidth;
+        Console.SetCursorPosition(20, 20);
+
+
+        /////////////////
+        writeHelpCommand(90, 8);
         Console.SetCursorPosition(point.X, point.Y);
         string? commandString = Console.ReadLine();
         while (commandString != "exit")
@@ -124,7 +131,67 @@ public class Program
             commandString = Console.ReadLine();
         }
     }
+    public static void DrawLines()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Console.Write($"{Red(new string('*', 1))}");
+                Console.Write($"{Magenta(new string('*', 1))}");
+                Console.Write($"{Yellow(new string('*', 1))}");
+            }
+            else
+            {
+                Console.Write($"{Yellow(new string('*', 1))}");
+                Console.Write($"{Magenta(new string('*', 1))}");
+                Console.Write($"{Red(new string('*', 1))}");
 
+            }
+        }
+
+        for (int i = 0; i < 51; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Console.Write($"{Red(new string('*', 1))}");
+                Console.Write($"{Magenta(new string('*', 1))}");
+                Console.Write($"{Yellow(new string('*', 1))}");
+            }
+            else
+            {
+                Console.Write($"{Yellow(new string('*', 1))}");
+                Console.Write($"{Magenta(new string('*', 1))}");
+                Console.Write($"{Red(new string('*', 1))}");
+
+            }
+            //Console.Write($"{Cyan(new string('*', i))}");
+            //  Console.WriteLine($"{('*', Console.BufferWidth - i))}");
+        }
+        for (int i = 0; i < 33; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Console.SetCursorPosition(153, 6 + i);
+                Console.Write($"{Magenta(new string('*', 1))}");
+                Console.Write($"{Yellow(new string('*', 1))}");
+            }
+            else
+            {
+                Console.SetCursorPosition(153, 6 + i);
+                Console.Write($"{Red(new string('*', 1))}");
+                Console.Write($"{Yellow(new string('*', 1))}");
+            }
+
+            //  Console.WriteLine($"{('*', Console.BufferWidth - i))}");
+            if (i == 31)
+            {
+
+            }
+        }
+        Console.SetCursorPosition(1, 7);
+
+    }
     private static void writeHelpCommand(int left, int top)
     {
         if (left == 0 && top == 0)
@@ -137,18 +204,20 @@ public class Program
             Console.WriteLine(Bold(Blue("IMPORT {0} {1}")), new string('.', 5), "<filePath (.csv) or (.vcf)>");
             Console.WriteLine($"Brings in contacts from either a {Red(".csv")} file or a {Red(".vcf")} file.");
             Console.WriteLine(Bold(Cyan("EXPORT {0}")), new string('.', 5));
-            Console.WriteLine($"Takes all contacts taken from {Blue("IMPORT")} and compiles them into a pipe-separated file.");
+            Console.WriteLine($"Takes all contacts taken from {Blue("IMPORT")} and compiles them-");
+            Console.WriteLine("-into a pipe-separated file.");
             Console.WriteLine(Bold(Magenta("VIEW {0}")), new string('.', 5));
             Console.WriteLine($"Opens the .save file that has been exported.");
             Console.WriteLine(Bold(Yellow("EXIT {0}")), new string('.', 7));
             Console.WriteLine($"Exits the program");
         }
+
         else
         {
             Console.SetCursorPosition(left, top);
             Console.WriteLine("Contacts Merger Help\n");
             Console.SetCursorPosition(left, top++);
-            Console.WriteLine(Bold(Green("ADD {0} {1}")), new string('.', 8), "<FirstName> <LastName> <Phone#> <PhoneCategory>");
+            Console.WriteLine(Bold(Green("ADD {0} {1}")), new string('.', 8), "<FirstName> <LastName> <Phone#> <PhoneCategory>  ");
             Console.SetCursorPosition(left, top++);
             Console.WriteLine("Adds a new contact to the final save file");
             Console.SetCursorPosition(left, top++);
@@ -162,7 +231,9 @@ public class Program
             Console.SetCursorPosition(left, top++);
             Console.WriteLine(Bold(Cyan("EXPORT {0}")), new string('.', 5));
             Console.SetCursorPosition(left, top++);
-            Console.WriteLine($"Takes all contacts taken from {Blue("IMPORT")} and compiles them into a pipe-separated file.");
+            Console.WriteLine($"Takes all contacts taken from {Blue("IMPORT")} and compiles-.");
+            Console.SetCursorPosition(left, top++);
+            Console.WriteLine("-into a pipe-separated file.");
             Console.SetCursorPosition(left, top++);
             Console.WriteLine(Bold(Magenta("VIEW {0}")), new string('.', 5));
             Console.SetCursorPosition(left, top++);
