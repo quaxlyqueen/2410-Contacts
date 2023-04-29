@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {}
+    "/Users/marcuswalker/Documents/2410-Contacts/Contacts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj": {
+    "/Users/marcuswalker/Documents/2410-Contacts/Contacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
+        "projectUniqueName": "/Users/marcuswalker/Documents/2410-Contacts/Contacts.csproj",
         "projectName": "Contacts",
-        "projectPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\Contacts.csproj",
-        "packagesPath": "C:\\Users\\overw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\overw\\source\\repos\\2410-Contacts\\obj\\",
+        "projectPath": "/Users/marcuswalker/Documents/2410-Contacts/Contacts.csproj",
+        "packagesPath": "/Users/marcuswalker/.nuget/packages/",
+        "outputPath": "/Users/marcuswalker/Documents/2410-Contacts/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\overw\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/marcuswalker/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }

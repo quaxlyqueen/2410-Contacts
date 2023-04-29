@@ -14,6 +14,13 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        OperatingSystem os = Environment.OSVersion; // checking what OS is running
+        Console.WriteLine("Platform: {0}", os.Platform);
+        Console.WriteLine("Version: {0}", os.Version);
+        Console.WriteLine("Service Pack: {0}", os.ServicePack);
+
+        bool isMacOS = (os.Platform == PlatformID.MacOSX || os.Platform == PlatformID.Unix);
+
         FileIO fileIO = new FileIO();
         Resolver? resolver;
 
@@ -28,20 +35,13 @@ public class Program
 \____/ \___/ |_| |_| \__|\__,_| \___| \__||___/ \/    \/ \___||_|   \__, | \___||_|   
                                                                     |___/             
 """));
-        DrawLines();
+        // DrawLines();
+        Console.WriteLine($"\n{Output.Background.Red(White(new string('~', Console.BufferWidth - 2)))}");
         Console.Write("> ");
-        //  int l = i;
-
-        Point point = new Point(Console.CursorLeft, Console.CursorTop++);
-        // Console.WriteLine(Environment.GetEnvironmentVariable("HOMEDRIVE"));
+        Point point = new Point(Console.CursorLeft, Console.CursorTop);
         bool isDebug = false;
         bool isExported = false;
-        //  int current = Console.BufferWidth;
-        Console.SetCursorPosition(20, 20);
-
-
-        /////////////////
-        writeHelpCommand(90, 8);
+        writeHelpCommand(Console.BufferWidth / 2, 9);
         Console.SetCursorPosition(point.X, point.Y);
         string? commandString = Console.ReadLine();
         while (commandString != "exit")
@@ -71,13 +71,34 @@ public class Program
                     Contact.RemoveContact(fullname);
                     break;
                 case "view":
-                    if (isExported)
+                    if (!isDebug)
                     {
-                        Process.Start("notepad.exe", "yourContacts.save");
+                        if (isExported)
+                        {
+                            if (isMacOS)
+                            {
+                                Process.Start("/System/Applications/TextEdit.app/Contents/MacOS/TextEdit", Path.Combine(Directory.GetCurrentDirectory(), "yourContacts.save"));
+                            }
+                            else
+                            {
+                                Process.Start("notepad.exe", "yourContacts.save");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"The database hasn't been exported to a {Red(".save")} file. Use {Cyan("EXPORT")} before using this command");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine($"The database hasn't been exported to a {Red(".save")} file. Use {Cyan("EXPORT")} before using this command");
+                        if (isMacOS)
+                        {
+                            Process.Start("/System/Applications/TextEdit.app/Contents/MacOS/TextEdit", Path.Combine(Directory.GetCurrentDirectory(), "yourContacts.save"));
+                        }
+                        else
+                        {
+                            Process.Start("notepad.exe", "yourContacts.save");
+                        }
                     }
                     break;
                 case "import":
@@ -92,6 +113,7 @@ public class Program
                 case "export":
                     fileIO.Save();
                     isExported = true;
+                    Console.WriteLine($"Your new {Red(".save")}  file has been saved @ {Path.Combine(Directory.GetCurrentDirectory(), "yourContacts.save")}");
                     // TODO: Some way to tell them that it was saved to a certain spot in their computer
                     break;
                 case "help":
@@ -109,6 +131,7 @@ public class Program
                     if (arguments[0] == "true")
                     {
                         isDebug = true;
+                        Console.WriteLine(Yellow("ABSOLUTE FILE PATH TO yourContacts.save: {0}"), Path.Combine(Directory.GetCurrentDirectory(), "yourContacts.save"));
                     }
                     else if (arguments[0] == "false")
                     {
